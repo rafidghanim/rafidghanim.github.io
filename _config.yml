@@ -14,7 +14,7 @@ timezone: Asia/Jakarta
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: raph # the main title
+title: r's blog # the main title
 
 tagline: CTF and Security analysis blog # it will display as the subtitle
 
@@ -27,20 +27,20 @@ description: >- # used by seo meta and the atom feed
 url: ""
 
 github:
-  username: 0xr4ph # change to your GitHub username
+  username: rafidghanim # change to your GitHub username
 
 twitter:
-  username: 0xr4ph # change to your Twitter username
+  username: rafidghanim # change to your Twitter username
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: 0xr4ph
-  email: 0xr4ph@gmail.com # change to your email address
+  name: rafidghanim
+  email: rafidghanim022@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/0xr4ph # change to your Twitter homepage
-    - https://github.com/0xr4ph # change to your GitHub homepage
+    - https://twitter.com/rafidghanim # change to your Twitter homepage
+    - https://github.com/rafidghanim # change to your GitHub homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
