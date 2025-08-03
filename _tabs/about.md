@@ -11,3 +11,4 @@ I'm passionate about ethical hacking, capture-the-flag competitions, and explori
 Currently, I’m studying Informatics at **Universitas Sebelas Maret (UNS)**, and actively competing in cybersecurity events
 
 You can find more about me on my [LinkedIn](https://id.linkedin.com/in/rafid-ghani-mahadri-b7ab02256).
+
