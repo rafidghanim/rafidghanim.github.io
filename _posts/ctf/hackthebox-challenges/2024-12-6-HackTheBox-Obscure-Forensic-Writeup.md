@@ -36,6 +36,7 @@ we got 3 files which PCAP, PHP and text.
 ```to-do txt
 An attacker has found a vulnerability in our web server that allows arbitraty PHP file upload in our Apache server. Suchlike, the hacker has uploaded a what seems to be like an obfuscated shell (support.php). We monitor our network 24/7 and generate logs from tcpdump (we provided the log file for the period of two minutes before we terminated the HTTP service for investigation), however. we need your help in analyzing and identifying commands the attacker wrote to understand what was compromised.
 ```
+
 from to-do.txt it's clearly stated that there was a suspicious logs and we should analyze it.
 
 ```php
