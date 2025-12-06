@@ -115,7 +115,7 @@ if (@preg_match("/$kh(.+)$kf/", @file_get_contents("php://input"), $m) == 1) {
 ```
 done with analyzing the backdoor code, now let's analyze the traffic 
 
-![image](/assets/img/Pasted\ image\ 20251206194543.png)
+![image](/assets/img/Pasted image 20251206194543.png)
 much http requests here, based the information from the backdoor the attacker should make a post requests to trigger the backdoor so we can filter the traffic by only showing http posts request
 ![image](/assets/img/Pasted image 20251206200321.png)
 we have 4 http requests that we can check it one by one.
