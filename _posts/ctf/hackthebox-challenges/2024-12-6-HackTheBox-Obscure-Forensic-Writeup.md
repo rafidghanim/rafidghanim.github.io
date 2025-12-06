@@ -21,7 +21,7 @@ toc: false
 ### Challenge: Obscure [Easy]
 - **Description**: `An attacker has found a vulnerability in our web server that allows arbitrary PHP file upload in our Apache server. Suchlike, the hacker has uploaded a what seems to be like an obfuscated shell (support.php). We monitor our network 24/7 and generate logs from tcpdump (we provided the log file for the period of two minutes before we terminated the HTTP service for investigation), however, we need your help in analyzing and identifying commands the attacker wrote to understand what was compromised.`
 - **Solution Steps**:
-Given [Obscure.zip](/files/Obscure.zip) as attachment challenges, then after i extract it it given
+Given [Obscure.zip](/assets/files/Obscure.zip) as attachment challenges, then after i extract it it given
 ```sh
 user@parrot~> unzip Obscure.zip
 
