@@ -2,9 +2,12 @@
 
 layout: post
 title: "Prinsip Kerja Rangkaian Sekuensial Flip-Flop, Jenis, dan Penerapannya"
+description: "Penjelasan prinsip kerja rangkaian sekuensial flip-flop, jenis, dan penerapannya."
 date: 2025-12-22
 categories: elektronika digital
 tags: [flip-flop, rangkaian sekuensial, elektronika digital, jekyll]
+image: /assets/img/avatar.jpg
+author: rafidghanim
 ---
 
 ## Pengantar

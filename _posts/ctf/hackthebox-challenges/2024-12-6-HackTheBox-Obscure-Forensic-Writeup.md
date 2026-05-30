@@ -1,6 +1,7 @@
 ---
 layout: post
 title: HackTheBox Obscure Forensics Writeup
+description: "Forensics writeup for the HackTheBox Obscure challenge."
 date: 2024-11-23
 categories:
   - writeup
@@ -9,6 +10,8 @@ tags:
   - ctf
   - forensics
   - hackthebox
+image: /assets/img/hackthebox/obscure/01-overview.png
+author: rafidghanim
 toc: false
 ---
 

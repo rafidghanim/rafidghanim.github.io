@@ -6,7 +6,7 @@ theme: jekyll-theme-chirpy
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
 # otherwise, the layout language will use the default value of 'en'.
-lang: en
+lang: en-US
 
 # Change to your timezone › https://kevinnovak.github.io/Time-Zone-Picker
 timezone: Asia/Jakarta
@@ -19,7 +19,11 @@ title: gr3yr4t # the main title
 tagline: CTF and Security analysis # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
-  Welcome to my small ctf's and related to technolgy writeups 
+  CTF writeups, security analysis, reverse engineering, forensics, web exploitation, cryptography, and cybersecurity notes.
+
+author: rafidghanim
+
+logo: assets/img/avatar.jpg
 
 
 # Fill in the protocol & hostname for your site.
@@ -154,6 +158,11 @@ paginate: 10
 # The base URL of your site
 baseurl: ""
 
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
 # ------------ The following options are not recommended to be modified ------------------
 
 kramdown:
@@ -208,6 +217,8 @@ compress_html:
     envs: [development]
 
 exclude:
+  - assets/feed.xml
+  - assets/robots.txt
   - "*.gem"
   - "*.gemspec"
   - docs

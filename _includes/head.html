@@ -10,7 +10,7 @@
   >
 
   {%- capture seo_tags -%}
-    {% seo title=false %}
+    {% seo %}
   {%- endcapture -%}
 
   {% if page.image %}
@@ -47,13 +47,6 @@
   {% endif %}
 
   {{ seo_tags }}
-
-  <title>
-    {%- unless page.layout == 'home' -%}
-      {{ page.title | append: ' | ' }}
-    {%- endunless -%}
-    {{ site.title }}
-  </title>
 
   {% include_cached favicons.html %}
 
