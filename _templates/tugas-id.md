@@ -2,12 +2,13 @@
 layout: post
 title: "Judul Tugas"
 description: "Ringkasan singkat topik, tujuan, dan hasil pengerjaan tugas."
+date: YYYY-MM-DD HH:MM:SS +0700
 author: rafidghanim
 categories: [kuliah, tugas]
 tags: [tugas, mata-kuliah, topik]
 toc: true
 comments: true
-image:
+image: /assets/img/avatar.jpg
 ---
 
 # Judul Tugas

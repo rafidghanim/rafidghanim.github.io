@@ -24,16 +24,17 @@ Semua template memakai front matter dasar:
 layout: post
 title:
 description:
-author:
+date: YYYY-MM-DD HH:MM:SS +0700
+author: rafidghanim
 categories:
 tags:
 toc: true
 comments: true
-image:
+image: /assets/img/avatar.jpg
 ---
 ```
 
-Jangan hapus `layout`, `toc`, atau `comments` kecuali memang ingin mengubah behavior post. Sesuaikan `categories` dan `tags` agar halaman arsip, kategori, dan tag tetap rapi.
+Jangan hapus `layout`, `title`, `description`, `date`, `author`, `categories`, `tags`, `toc`, `comments`, atau `image` kecuali memang ingin mengubah behavior post. Field tersebut dipakai oleh Jekyll SEO Tag, feed, sitemap, halaman arsip, kategori, dan tag.
 
 ## Callout
 

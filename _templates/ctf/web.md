@@ -13,7 +13,7 @@ points: 0
 author: "gr3yr4t"
 toc: true
 comments: true
-image:
+image: /assets/img/avatar.jpg
 ---
 
 # {{ page.title }}

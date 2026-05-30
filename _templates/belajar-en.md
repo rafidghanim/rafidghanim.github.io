@@ -2,12 +2,13 @@
 layout: post
 title: "Learning Notes: Topic"
 description: "Concise learning notes covering the concept, examples, and references."
+date: YYYY-MM-DD HH:MM:SS +0700
 author: rafidghanim
 categories: [learning, notes]
 tags: [learning, concept, topic]
 toc: true
 comments: true
-image:
+image: /assets/img/avatar.jpg
 ---
 
 # Learning Notes: Topic

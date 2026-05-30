@@ -2,12 +2,13 @@
 layout: post
 title: "[CTF] Challenge Title"
 description: "A concise summary of the challenge, category, and exploit path."
+date: YYYY-MM-DD HH:MM:SS +0700
 author: rafidghanim
 categories: [writeup, ctf]
 tags: [ctf, category, tools]
 toc: true
 comments: true
-image:
+image: /assets/img/avatar.jpg
 ---
 
 # [CTF] Challenge Title

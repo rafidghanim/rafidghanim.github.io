@@ -2,12 +2,13 @@
 layout: post
 title: "Catatan Belajar: Topik"
 description: "Catatan belajar ringkas tentang konsep, contoh, dan referensi."
+date: YYYY-MM-DD HH:MM:SS +0700
 author: rafidghanim
 categories: [belajar, catatan]
 tags: [belajar, konsep, topik]
 toc: true
 comments: true
-image:
+image: /assets/img/avatar.jpg
 ---
 
 # Catatan Belajar: Topik

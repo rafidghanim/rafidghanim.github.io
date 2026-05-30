@@ -2,12 +2,13 @@
 layout: post
 title: "Assignment Title"
 description: "A short summary of the topic, objective, and assignment result."
+date: YYYY-MM-DD HH:MM:SS +0700
 author: rafidghanim
 categories: [coursework, assignment]
 tags: [assignment, course, topic]
 toc: true
 comments: true
-image:
+image: /assets/img/avatar.jpg
 ---
 
 # Assignment Title

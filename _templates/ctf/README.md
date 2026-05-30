@@ -32,3 +32,17 @@ _posts/YYYY-MM-DD-ctf-name-challenge-name.md
 ```
 
 After generation, edit the new post and fill the placeholders. The script does not modify old posts, permalinks, layouts, or theme files.
+
+## SEO Fields
+
+Each CTF template already includes the SEO-safe front matter used by the site:
+
+```yaml
+description: "Short summary of the challenge and solution."
+author: "gr3yr4t"
+image: /assets/img/avatar.jpg
+toc: true
+comments: true
+```
+
+Update `description` and `image` per writeup when a challenge has a better summary or cover image. Keep `title`, `date`, `categories`, and `tags` filled so `jekyll-seo-tag`, `jekyll-feed`, and `jekyll-sitemap` can generate clean metadata.

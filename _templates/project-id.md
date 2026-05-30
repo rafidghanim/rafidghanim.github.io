@@ -2,12 +2,13 @@
 layout: post
 title: "Project: Nama Project"
 description: "Ringkasan singkat masalah, solusi, dan hasil project."
+date: YYYY-MM-DD HH:MM:SS +0700
 author: rafidghanim
 categories: [project]
 tags: [project, teknologi, topik]
 toc: true
 comments: true
-image:
+image: /assets/img/avatar.jpg
 ---
 
 # Project: Nama Project

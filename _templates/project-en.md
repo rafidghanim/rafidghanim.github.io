@@ -2,12 +2,13 @@
 layout: post
 title: "Project: Project Name"
 description: "A short summary of the problem, solution, and project outcome."
+date: YYYY-MM-DD HH:MM:SS +0700
 author: rafidghanim
 categories: [project]
 tags: [project, technology, topic]
 toc: true
 comments: true
-image:
+image: /assets/img/avatar.jpg
 ---
 
 # Project: Project Name

@@ -2,12 +2,13 @@
 layout: post
 title: "[CTF] Judul Challenge"
 description: "Ringkasan singkat challenge, kategori, dan pendekatan solusi."
+date: YYYY-MM-DD HH:MM:SS +0700
 author: rafidghanim
 categories: [writeup, ctf]
 tags: [ctf, kategori, tools]
 toc: true
 comments: true
-image:
+image: /assets/img/avatar.jpg
 ---
 
 # [CTF] Judul Challenge
