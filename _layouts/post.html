@@ -1,0 +1,25 @@
+---
+layout: default
+refactor: true
+panel_includes:
+  - toc
+tail_includes:
+  - related-posts
+  - post-nav
+script_includes:
+  - comment
+---
+
+{% include lang.html %}
+{% include toc-status.html %}
+
+<article class="px-1 post-article" data-toc="{{ enable_toc }}">
+  {% include post-header.html content=content lang=lang %}
+  {% include post-toc.html enable_toc=enable_toc lang=lang %}
+
+  <div class="content">
+    {{ content }}
+  </div>
+
+  {% include post-taxonomy.html lang=lang %}
+</article>

@@ -14,12 +14,12 @@ timezone: Asia/Jakarta
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: r's # the main title
+title: gr3yr4t # the main title
 
-tagline: CTF and Security analysis blog # it will display as the subtitle
+tagline: CTF and Security analysis # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
-  Welcome to my small ctf's and related to technolgy writeups blog
+  Welcome to my small ctf's and related to technolgy writeups 
 
 
 # Fill in the protocol & hostname for your site.
