@@ -23,7 +23,7 @@ description: >- # used by seo meta and the atom feed
 
 author: rafidghanim
 
-logo: assets/img/avatar.jpg
+logo: /assets/img/avatar.jpg
 
 
 # Fill in the protocol & hostname for your site.
