@@ -704,3 +704,231 @@ footer {
     margin-top: 2rem;
   }
 }
+
+/* =========================
+   Light Mode - Cyber Glass
+========================= */
+
+html:not([data-mode="dark"]) .mermaid {
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.55)),
+    radial-gradient(circle at 18% 12%, rgba(14, 165, 233, 0.35), transparent 28%),
+    radial-gradient(circle at 82% 22%, rgba(168, 85, 247, 0.28), transparent 30%),
+    radial-gradient(circle at 50% 100%, rgba(34, 211, 238, 0.22), transparent 35%),
+    linear-gradient(135deg, #e0f2fe 0%, #f8fbff 45%, #ede9fe 100%);
+  border: 1px solid rgba(14, 165, 233, 0.35);
+  box-shadow:
+    0 22px 55px rgba(15, 23, 42, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  position: relative;
+}
+
+html:not([data-mode="dark"]) .mermaid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(14, 165, 233, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14, 165, 233, 0.09) 1px, transparent 1px);
+  background-size: 34px 34px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+}
+
+html:not([data-mode="dark"]) .mermaid svg {
+  position: relative;
+  z-index: 1;
+}
+
+html:not([data-mode="dark"]) .mermaid .node rect,
+html:not([data-mode="dark"]) .mermaid .node polygon,
+html:not([data-mode="dark"]) .mermaid .node circle,
+html:not([data-mode="dark"]) .mermaid .node ellipse {
+  fill: rgba(255, 255, 255, 0.88) !important;
+  stroke: #0ea5e9 !important;
+  stroke-width: 1.8px !important;
+  filter:
+    drop-shadow(0 10px 20px rgba(14, 165, 233, 0.22))
+    drop-shadow(0 0 10px rgba(168, 85, 247, 0.16));
+}
+
+html:not([data-mode="dark"]) .mermaid .nodeLabel,
+html:not([data-mode="dark"]) .mermaid .nodeLabel p {
+  color: #0f172a !important;
+  fill: #0f172a !important;
+  font-weight: 800 !important;
+}
+
+html:not([data-mode="dark"]) .mermaid .edgePath path,
+html:not([data-mode="dark"]) .mermaid .flowchart-link {
+  stroke: #0ea5e9 !important;
+  stroke-width: 2.4px !important;
+  filter: drop-shadow(0 0 6px rgba(14, 165, 233, 0.35));
+}
+
+html:not([data-mode="dark"]) .mermaid marker path {
+  fill: #0ea5e9 !important;
+  stroke: #0ea5e9 !important;
+}
+
+html:not([data-mode="dark"]) .mermaid .edgeLabel,
+html:not([data-mode="dark"]) .mermaid .edgeLabel span,
+html:not([data-mode="dark"]) .mermaid .labelBkg {
+  background: rgba(255, 255, 255, 0.92) !important;
+  color: #0f172a !important;
+  fill: rgba(255, 255, 255, 0.92) !important;
+}
+
+/* =========================
+   Mermaid Base - Default Dark
+========================= */
+
+.mermaid {
+  width: 100%;
+  margin: 2rem 0;
+  padding: 2rem;
+  overflow-x: auto;
+  border-radius: 18px;
+  position: relative;
+  background:
+    radial-gradient(circle at top left, rgba(34, 211, 238, 0.16), transparent 32%),
+    radial-gradient(circle at bottom right, rgba(124, 58, 237, 0.20), transparent 34%),
+    linear-gradient(135deg, #020617 0%, #0f172a 48%, #020617 100%);
+  border: 1px solid rgba(34, 211, 238, 0.22);
+  box-shadow:
+    0 0 28px rgba(34, 211, 238, 0.14),
+    inset 0 0 40px rgba(255, 255, 255, 0.035);
+}
+
+.mermaid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(34, 211, 238, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.045) 1px, transparent 1px);
+  background-size: 34px 34px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), transparent);
+}
+
+.mermaid svg {
+  display: block;
+  position: relative;
+  z-index: 1;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
+
+.mermaid .node rect,
+.mermaid .node polygon,
+.mermaid .node circle,
+.mermaid .node ellipse {
+  rx: 10px;
+  ry: 10px;
+  fill: #111827 !important;
+  stroke: #22d3ee !important;
+  stroke-width: 1.6px !important;
+  filter:
+    drop-shadow(0 0 10px rgba(34, 211, 238, 0.32))
+    drop-shadow(0 10px 20px rgba(0, 0, 0, 0.35));
+}
+
+.mermaid .nodeLabel,
+.mermaid .nodeLabel p,
+.mermaid .label,
+.mermaid .label p {
+  color: #e5e7eb !important;
+  fill: #e5e7eb !important;
+  font-family: "Inter", "Segoe UI", sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.2px;
+}
+
+.mermaid .edgePath path,
+.mermaid .flowchart-link {
+  stroke: #22d3ee !important;
+  stroke-width: 2.2px !important;
+  filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.45));
+}
+
+.mermaid marker path {
+  fill: #22d3ee !important;
+  stroke: #22d3ee !important;
+}
+
+.mermaid .edgeLabel,
+.mermaid .edgeLabel span,
+.mermaid .labelBkg {
+  background: rgba(2, 6, 23, 0.92) !important;
+  color: #e5e7eb !important;
+  fill: rgba(2, 6, 23, 0.92) !important;
+}
+
+/* =========================
+   Light Mode - Cyber Glass
+========================= */
+
+html:not([data-mode="dark"]) .mermaid {
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.48), rgba(255, 255, 255, 0.48)),
+    radial-gradient(circle at 18% 12%, rgba(14, 165, 233, 0.35), transparent 28%),
+    radial-gradient(circle at 82% 22%, rgba(168, 85, 247, 0.28), transparent 30%),
+    radial-gradient(circle at 50% 100%, rgba(34, 211, 238, 0.22), transparent 35%),
+    linear-gradient(135deg, #e0f2fe 0%, #f8fbff 45%, #ede9fe 100%);
+  border: 1px solid rgba(14, 165, 233, 0.35);
+  box-shadow:
+    0 22px 55px rgba(15, 23, 42, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+html:not([data-mode="dark"]) .mermaid::before {
+  background-image:
+    linear-gradient(rgba(14, 165, 233, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14, 165, 233, 0.09) 1px, transparent 1px);
+}
+
+html:not([data-mode="dark"]) .mermaid .node rect,
+html:not([data-mode="dark"]) .mermaid .node polygon,
+html:not([data-mode="dark"]) .mermaid .node circle,
+html:not([data-mode="dark"]) .mermaid .node ellipse {
+  fill: rgba(255, 255, 255, 0.9) !important;
+  stroke: #0ea5e9 !important;
+  stroke-width: 1.8px !important;
+  filter:
+    drop-shadow(0 10px 20px rgba(14, 165, 233, 0.22))
+    drop-shadow(0 0 10px rgba(168, 85, 247, 0.16));
+}
+
+html:not([data-mode="dark"]) .mermaid .nodeLabel,
+html:not([data-mode="dark"]) .mermaid .nodeLabel p,
+html:not([data-mode="dark"]) .mermaid .label,
+html:not([data-mode="dark"]) .mermaid .label p {
+  color: #0f172a !important;
+  fill: #0f172a !important;
+  font-weight: 800 !important;
+}
+
+html:not([data-mode="dark"]) .mermaid .edgePath path,
+html:not([data-mode="dark"]) .mermaid .flowchart-link {
+  stroke: #0ea5e9 !important;
+  stroke-width: 2.4px !important;
+  filter: drop-shadow(0 0 6px rgba(14, 165, 233, 0.35));
+}
+
+html:not([data-mode="dark"]) .mermaid marker path {
+  fill: #0ea5e9 !important;
+  stroke: #0ea5e9 !important;
+}
+
+html:not([data-mode="dark"]) .mermaid .edgeLabel,
+html:not([data-mode="dark"]) .mermaid .edgeLabel span,
+html:not([data-mode="dark"]) .mermaid .labelBkg {
+  background: rgba(255, 255, 255, 0.92) !important;
+  color: #0f172a !important;
+  fill: rgba(255, 255, 255, 0.92) !important;
+}

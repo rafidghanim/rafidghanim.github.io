@@ -1,0 +1,125 @@
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+
+<style>
+  .mermaid {
+    width: 100%;
+    margin: 2rem 0;
+    padding: 2rem;
+    overflow-x: auto;
+    border-radius: 18px;
+    background:
+      radial-gradient(circle at top left, rgba(0, 255, 255, 0.12), transparent 32%),
+      radial-gradient(circle at bottom right, rgba(120, 80, 255, 0.14), transparent 34%),
+      linear-gradient(135deg, #0b1020 0%, #111827 48%, #050816 100%);
+    border: 1px solid rgba(120, 180, 255, 0.18);
+    box-shadow:
+      0 0 24px rgba(0, 255, 255, 0.08),
+      inset 0 0 32px rgba(255, 255, 255, 0.03);
+  }
+
+  .mermaid svg {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .mermaid .node rect,
+  .mermaid .node polygon,
+  .mermaid .node circle,
+  .mermaid .node ellipse {
+    rx: 10px;
+    ry: 10px;
+    filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.25));
+  }
+
+  .mermaid .nodeLabel {
+    font-family: "Inter", "Segoe UI", sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.2px;
+  }
+
+  .mermaid .edgeLabel {
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.85) !important;
+    color: #e5e7eb !important;
+    font-size: 12px !important;
+    font-weight: 600;
+  }
+
+  .mermaid .edgePath path {
+    stroke-width: 2px !important;
+    filter: drop-shadow(0 0 5px rgba(34, 211, 238, 0.35));
+  }
+
+  .mermaid marker path {
+    fill: #22d3ee !important;
+    stroke: #22d3ee !important;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    console.log("[mermaid] loader active");
+
+    mermaid.initialize({
+      startOnLoad: false,
+      securityLevel: "loose",
+      theme: "base",
+      themeVariables: {
+        background: "transparent",
+
+        primaryColor: "#111827",
+        primaryTextColor: "#e5e7eb",
+        primaryBorderColor: "#22d3ee",
+
+        lineColor: "#22d3ee",
+        secondaryColor: "#1e293b",
+        tertiaryColor: "#0f172a",
+
+        edgeLabelBackground: "#020617",
+        clusterBkg: "#020617",
+        clusterBorder: "#334155",
+
+        fontFamily: "Inter, Segoe UI, sans-serif"
+      },
+
+      flowchart: {
+        curve: "basis",
+        nodeSpacing: 55,
+        rankSpacing: 70,
+        padding: 18
+      }
+    });
+
+    document.querySelectorAll("pre code").forEach(function (code) {
+      const text = code.textContent.trim();
+
+      if (
+        text.startsWith("flowchart") ||
+        text.startsWith("graph") ||
+        text.startsWith("sequenceDiagram") ||
+        text.startsWith("classDiagram") ||
+        text.startsWith("stateDiagram") ||
+        text.startsWith("erDiagram") ||
+        text.startsWith("journey") ||
+        text.startsWith("gantt")
+      ) {
+        const pre = code.closest("pre");
+        const wrapper = pre.closest(".highlight") || pre;
+
+        const div = document.createElement("div");
+        div.className = "mermaid";
+        div.textContent = text;
+
+        wrapper.replaceWith(div);
+      }
+    });
+
+    mermaid.run({
+      querySelector: ".mermaid"
+    });
+  });
+</script>
