@@ -34,4 +34,4 @@ new-ctf-post.sh
 
 _templates/*
 
-_posts/*
+# _posts/*
