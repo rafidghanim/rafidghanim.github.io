@@ -29,3 +29,9 @@ assets/js/dist
 # Drafts
 _drafts
 auto_update.sh
+
+new-ctf-post.sh
+
+_templates/*
+
+_posts/*
