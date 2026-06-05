@@ -10,53 +10,36 @@
       {{ site.data.locales[include.lang].post.posted }}
       {% include datetime.html date=page.date tooltip=true lang=include.lang %}
     </span>
-
-    <div class="d-flex justify-content-between gap-3 post-meta-row">
+=begin
+    {% if page.last_modified_at and page.last_modified_at != page.date %}
       <span>
+        {{ site.data.locales[include.lang].post.updated }}
+        {% include datetime.html date=page.last_modified_at tooltip=true lang=include.lang %}
+      </span>
+    {% endif %}
+=end
+<div class="d-flex justify-content-between gap-3 post-meta-row">
+      <span>
+        {% if page.author %}
+          {% assign authors = page.author %}
+        {% elsif page.authors %}
+          {% assign authors = page.authors %}
+        {% endif %}
+
         {{ site.data.locales[include.lang].post.written_by }}
 
         <em>
-          {% if page.author %}
-            {% assign author_key = page.author %}
-            {% assign author_data = site.data.authors[author_key] %}
-
-            {% if author_data %}
-              {% if author_data.url %}
-                <a href="{{ author_data.url }}">{{ author_data.name | default: author_key }}</a>
-              {% else %}
-                {{ author_data.name | default: author_key }}
-              {% endif %}
-            {% else %}
-              {{ author_key }}
-            {% endif %}
-
-          {% elsif page.authors %}
-            {% for author_key in page.authors %}
-              {% assign author_data = site.data.authors[author_key] %}
-
-              {% if author_data %}
-                {% if author_data.url %}
-                  <a href="{{ author_data.url }}">{{ author_data.name | default: author_key }}</a>
-                {% else %}
-                  {{ author_data.name | default: author_key }}
-                {% endif %}
-              {% else %}
-                {{ author_key }}
-              {% endif %}
-
-              {% unless forloop.last %}</em>, <em>{% endunless %}
+          {% if authors %}
+            {% for author in authors %}
+              {% if site.data.authors[author].url -%}
+                <a href="{{ site.data.authors[author].url }}">{{ site.data.authors[author].name }}</a>
+              {%- else -%}
+                {{ site.data.authors[author].name }}
+              {%- endif %}
+              {% unless forloop.last %}{{ '</em>, <em>' }}{% endunless %}
             {% endfor %}
-
           {% else %}
-            {% if site.social.name %}
-              {% if site.social.links and site.social.links[0] %}
-                <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>
-              {% else %}
-                {{ site.social.name }}
-              {% endif %}
-            {% elsif site.author %}
-              {{ site.author }}
-            {% endif %}
+            <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>
           {% endif %}
         </em>
       </span>
@@ -74,11 +57,10 @@
         {% include read-time.html content=include.content prompt=true lang=include.lang %}
       </div>
     </div>
-
     {% if page.image %}
       {% capture src %}src="{{ page.image.path | default: page.image }}"{% endcapture %}
       {% capture class %}class="preview-img{% if page.image.no_bg %}{{ ' no-bg' }}{% endif %}"{% endcapture %}
-      {% capture alt %}alt="{{ page.image.alt | xml_escape | default: 'Preview Image' }}"{% endcapture %}
+      {% capture alt %}alt="{{ page.image.alt | xml_escape | default: "Preview Image" }}"{% endcapture %}
 
       {% if page.image.lqip %}
         {%- capture lqip -%}lqip="{{ page.image.lqip }}"{%- endcapture -%}
@@ -91,5 +73,7 @@
         {%- endif -%}
       </div>
     {% endif %}
+
+    
   </div>
 </header>
