@@ -1,13 +1,12 @@
 ---
 layout: post
-title: "HackTheBox Obscure Forensics Writeup"
-description: "Forensics writeup for the HackTheBox Obscure challenge."
+title: "Hack The Box - Obscure"
+description: "Forensics writeup for the Hack The Box Obscure challenge, covering web shell deobfuscation, PCAP analysis, payload recovery, and KeePass cracking."
 date: 2024-11-23
 categories:
   - writeup
   - ctf
 tags:
-  - ctf
   - forensics
   - hackthebox
 image: /assets/img/hackthebox/obscure/01-overview.png
@@ -291,8 +290,10 @@ Finally, I opened the database using KeePass and found the flag.
 ## Flag
 
 ```txt
-HTB{pr0tect_y0_shellZ}
+HTB{redacted}
 ```
+
+The original flag is redacted.
 
 ---
 

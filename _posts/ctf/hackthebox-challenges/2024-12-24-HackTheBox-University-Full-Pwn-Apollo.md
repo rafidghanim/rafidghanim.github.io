@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "HackTheBox Apolo Writeup"
-description: "Writeup for HackTheBox Apolo machine, covering FlowiseAI authentication bypass and rclone privilege escalation."
+title: "Hack The Box - Apollo"
+description: "Hack The Box Apollo writeup covering FlowiseAI authentication bypass and rclone privilege escalation."
 date: 2024-12-15
 categories:
   - writeup
@@ -30,8 +30,10 @@ toc: true
 
 | Type | Flag |
 |---|---|
-| User | `HTB{llm_ex9l01t_4_RC3}` |
-| Root | `HTB{cl0n3_rc3_f1l3}` |
+| User | `HTB{redacted}` |
+| Root | `HTB{redacted}` |
+
+The original flags are redacted.
 
 ---
 
@@ -313,8 +315,8 @@ The `root.txt` file was copied as a directory containing the original flag file.
 
 ```sh
 lewis@apolo:~$ cat root.txt/root.txt && cat user.txt
-HTB{cl0n3_rc3_f1l3}
-HTB{llm_ex9l01t_4_RC3}
+HTB{redacted}
+HTB{redacted}
 ```
 
 ---
@@ -333,5 +335,7 @@ After logging in through SSH, I found that `lewis` could run `/usr/bin/rclone` a
 
 | Type | Flag |
 |---|---|
-| User | `HTB{llm_ex9l01t_4_RC3}` |
-| Root | `HTB{cl0n3_rc3_f1l3}` |
+| User | `HTB{redacted}` |
+| Root | `HTB{redacted}` |
+
+The original flags are redacted.

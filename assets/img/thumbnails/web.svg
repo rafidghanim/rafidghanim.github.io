@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Web exploitation thumbnail">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#020817"/>
+      <stop offset="0.52" stop-color="#07111f"/>
+      <stop offset="1" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#818cf8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <path d="M0 96h1200M0 534h1200M120 0v630M1080 0v630" stroke="#1e293b" stroke-width="2"/>
+  <rect x="124" y="132" width="952" height="366" rx="18" fill="#07111f" stroke="#334155" stroke-width="3"/>
+  <rect x="124" y="132" width="952" height="58" rx="18" fill="#0f172a"/>
+  <circle cx="170" cy="161" r="8" fill="#ef4444"/>
+  <circle cx="198" cy="161" r="8" fill="#f59e0b"/>
+  <circle cx="226" cy="161" r="8" fill="#22c55e"/>
+  <text x="172" y="315" fill="#e5edf7" font-family="JetBrains Mono, Consolas, monospace" font-size="64" font-weight="700">WEB EXPLOITATION</text>
+  <text x="174" y="378" fill="#93a4b8" font-family="Inter, Arial, sans-serif" font-size="30">query parsing / validation / filesystem paths</text>
+  <rect x="172" y="420" width="356" height="8" rx="4" fill="url(#accent)"/>
+</svg>

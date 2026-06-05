@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="CTF learning thumbnail">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#020817"/>
+      <stop offset="1" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <path d="M300 478V154h38l18 46h154v160H356" fill="none" stroke="#22d3ee" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="604" y="286" fill="#e5edf7" font-family="JetBrains Mono, Consolas, monospace" font-size="72" font-weight="700">CTF NOTES</text>
+  <text x="608" y="350" fill="#93a4b8" font-family="Inter, Arial, sans-serif" font-size="30">security learning through practical challenges</text>
+  <rect x="608" y="392" width="300" height="8" rx="4" fill="#818cf8"/>
+</svg>

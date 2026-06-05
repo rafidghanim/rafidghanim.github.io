@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Forensics thumbnail">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#020817"/>
+      <stop offset="1" stop-color="#101827"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="154" y="118" width="440" height="342" rx="14" fill="#07111f" stroke="#334155" stroke-width="3"/>
+  <path d="M212 190h320M212 246h260M212 302h300M212 358h210" stroke="#64748b" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="755" cy="280" r="96" fill="none" stroke="#22d3ee" stroke-width="12"/>
+  <path d="M824 350l126 126" stroke="#22d3ee" stroke-width="18" stroke-linecap="round"/>
+  <text x="648" y="160" fill="#e5edf7" font-family="JetBrains Mono, Consolas, monospace" font-size="64" font-weight="700">FORENSICS</text>
+  <text x="650" y="220" fill="#93a4b8" font-family="Inter, Arial, sans-serif" font-size="30">traffic / artifacts / recovered evidence</text>
+</svg>
