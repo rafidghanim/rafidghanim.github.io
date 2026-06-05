@@ -51,4 +51,4 @@ I am actively improving my ability to explain technical work clearly. The posts 
 
 - GitHub: [github.com/rafidghanim](https://github.com/rafidghanim)
 - LinkedIn: [Rafid Ghani Mahadri](https://id.linkedin.com/in/rafid-ghani-mahadri-b7ab02256)
-- Email: [rafidghanim022@gmail.com](mailto:rafidghanim022@gmail.com)
+- Email: [rafidghanim022@gmail.com](mailto:rafid.researcher@gmail.com)
