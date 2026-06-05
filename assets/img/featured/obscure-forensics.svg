@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Hack The Box Obscure featured thumbnail">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#020817"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="150" y="124" width="420" height="330" rx="16" fill="#07111f" stroke="#334155" stroke-width="3"/>
+  <text x="186" y="186" fill="#67e8f9" font-family="JetBrains Mono, Consolas, monospace" font-size="30">&lt;?php</text>
+  <path d="M188 232h294M188 282h228M188 332h312M188 382h170" stroke="#475569" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="790" cy="292" r="96" fill="none" stroke="#22d3ee" stroke-width="12"/>
+  <path d="M858 360l122 122" stroke="#22d3ee" stroke-width="18" stroke-linecap="round"/>
+  <text x="668" y="160" fill="#e5edf7" font-family="JetBrains Mono, Consolas, monospace" font-size="50" font-weight="700">web shell</text>
+  <text x="740" y="310" fill="#93a4b8" font-family="Inter, Arial, sans-serif" font-size="40">PCAP</text>
+  <text x="150" y="552" fill="#e5edf7" font-family="JetBrains Mono, Consolas, monospace" font-size="48" font-weight="700">Hack The Box - Obscure</text>
+</svg>

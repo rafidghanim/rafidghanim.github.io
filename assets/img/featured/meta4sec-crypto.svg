@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Meta4Sec crypto featured thumbnail">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#020817"/>
+      <stop offset="1" stop-color="#101827"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="324" cy="286" r="130" fill="#07111f" stroke="#334155" stroke-width="4"/>
+  <path d="M260 286h128M324 222v128M278 240l92 92M370 240l-92 92" stroke="#22d3ee" stroke-width="7" stroke-linecap="round"/>
+  <rect x="568" y="166" width="430" height="74" rx="8" fill="#07111f" stroke="#334155" stroke-width="3"/>
+  <rect x="568" y="278" width="430" height="74" rx="8" fill="#07111f" stroke="#334155" stroke-width="3"/>
+  <rect x="568" y="390" width="430" height="74" rx="8" fill="#07111f" stroke="#22d3ee" stroke-width="3"/>
+  <text x="604" y="213" fill="#94a3b8" font-family="JetBrains Mono, Consolas, monospace" font-size="28">known plaintext</text>
+  <text x="604" y="325" fill="#94a3b8" font-family="JetBrains Mono, Consolas, monospace" font-size="28">pattern recovery</text>
+  <text x="604" y="437" fill="#e5edf7" font-family="JetBrains Mono, Consolas, monospace" font-size="28">decrypt flag</text>
+  <text x="178" y="552" fill="#e5edf7" font-family="JetBrains Mono, Consolas, monospace" font-size="48" font-weight="700">Meta4Sec 2025 - Crypto</text>
+</svg>

@@ -13,7 +13,7 @@ points: 0
 author: "gr3yr4t"
 toc: true
 comments: true
-image: /assets/img/thumbnails/web.svg
+image: /assets/img/featured/nextpath.svg
 ---
 
 # {{ page.title }}

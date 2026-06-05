@@ -9,7 +9,7 @@ categories:
 tags:
   - forensics
   - hackthebox
-image: /assets/img/hackthebox/obscure/01-overview.png
+image: /assets/img/featured/obscure-forensics.svg
 author: rafidghanim
 toc: true
 ---

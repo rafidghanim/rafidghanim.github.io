@@ -4,8 +4,6 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-# About
-
 Hi, I'm **Rafid Ghani Mahadri**, an Informatics student at **Universitas Sebelas Maret (UNS)** and a cybersecurity enthusiast focused on CTF, exploit development, cryptography, web security, reverse engineering, and digital forensics.
 
 I use this blog to document my learning process, challenge writeups, exploit development notes, and technical research. My goal is not only to publish final payloads, but also to explain the reasoning, failed attempts, debugging process, and technical details behind each solve.

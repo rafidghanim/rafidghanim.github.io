@@ -35,3 +35,7 @@ new-ctf-post.sh
 _templates/*
 
 # _posts/*
+
+tools/generate-category-thumbnails.sh
+
+assets/img/thumbnails/*
