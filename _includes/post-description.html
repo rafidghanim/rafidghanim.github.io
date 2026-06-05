@@ -1,0 +1,8 @@
+{%- assign post = include.post | default: page -%}
+{%- assign description = post.description | default: post.excerpt | strip_html | normalize_whitespace | truncate: 160 -%}
+
+{%- if description and description != empty -%}
+  <p class="post-desc">
+    {{ description }}
+  </p>
+{%- endif -%}
