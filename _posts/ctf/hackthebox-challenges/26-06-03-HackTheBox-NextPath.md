@@ -16,8 +16,6 @@ comments: true
 image: /assets/img/featured/nextpath.svg
 ---
 
-# {{ page.title }}
-
 ## Challenge Description
 
 NextPath was a small Hack The Box web challenge built with Next.js. The site itself looked like a simple career landing page, with a hero section, some marketing text, and a "Meet Our Team" section.
