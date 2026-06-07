@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="390" viewBox="0 0 1920 390" role="img" aria-label="Hack The Box logo">
+  <style>
+    .htb-icon {
+      fill: #9FEF00;
+    }
+
+    .htb-wordmark {
+      fill: var(--htb-wordmark-color, #111827);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .htb-wordmark {
+        fill: #f8fafc;
+      }
+    }
+  </style>
+  <path class="htb-icon" fill-rule="evenodd" d="M267 33 124 116a18 18 0 0 0-9 16v126a18 18 0 0 0 9 16l143 83a18 18 0 0 0 18 0l143-83a18 18 0 0 0 9-16V132a18 18 0 0 0-9-16L285 33a18 18 0 0 0-18 0Zm9 34 94 54-94 55-94-55 94-54ZM153 151l98 57v107l-98-57V151Zm246 0-98 57v107l98-57V151Z"/>
+  <text class="htb-wordmark" x="552" y="261" font-family="Arial Black, Montserrat, Arial, sans-serif" font-size="85" font-weight="900" letter-spacing="18">HACKTHEBOX</text>
+</svg>

@@ -431,16 +431,25 @@ search:focus-within {
 
 .featured-card .preview-img {
   width: 100%;
-  aspect-ratio: 16 / 8.2;
+  height: 170px;
   border-bottom: 1px solid var(--border);
   background: var(--code-bg);
 }
 
 .featured-card img {
+  display: block;
   width: 100%;
-  aspect-ratio: 16 / 8.2;
+  height: 170px;
   object-fit: cover;
+  object-position: center;
+  border-bottom: 1px solid var(--border);
   background: var(--code-bg);
+}
+
+.featured-card img.contain,
+.featured-card--contain img {
+  object-fit: contain;
+  background: #0b1220;
 }
 
 .featured-card .featured-kicker,
@@ -914,7 +923,7 @@ footer {
 
   .featured-card .preview-img,
   .featured-card img {
-    aspect-ratio: 16 / 7.8;
+    height: 190px;
   }
 
   #post-list {

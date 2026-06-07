@@ -70,53 +70,38 @@ refactor: true
     </div>
 
     <div class="featured-grid">
-      <a class="featured-card" href="/posts/HackTheBox-NextPath/">
-        <img src="/assets/img/featured/nextpath.svg" alt="Hack The Box NextPath thumbnail">
-        <span class="featured-kicker">Flagship writeup</span>
-        <strong>Hack The Box - NextPath</strong>
-        <span class="featured-summary">A full exploit chain across duplicate query parameters, JavaScript coercion, multiline regex validation, and path truncation.</span>
-        <span class="featured-meta">
-          <span>Hack The Box</span>
-          <span>Web</span>
-          <span>Medium</span>
-        </span>
-      </a>
+      {% assign featured_posts = site.posts | where: 'featured', true %}
+      {% for post in featured_posts limit: 4 %}
+        {% assign featured_kicker = post.featured_kicker | default: post.categories.first %}
+        {% assign featured_image = post.featured_image | default: post.image.path | default: post.image %}
+        {% assign featured_image_alt = post.featured_image_alt | default: post.title %}
+        {% assign featured_summary = post.featured_summary | default: post.description %}
+        {% assign featured_meta = post.featured_meta | default: post.categories %}
 
-      <a class="featured-card" href="/posts/kctg-2026-pwn/">
-        <img src="/assets/img/featured/kctg-ret2win.svg" alt="KCTG ret2win thumbnail">
-        <span class="featured-kicker">Beginner pwn</span>
-        <strong>KCTG 2026 - Solve Chall Ini Plis</strong>
-        <span class="featured-summary">A stack overflow writeup with binary protections, offset calculation, fixed function addresses, and remote stack-alignment notes.</span>
-        <span class="featured-meta">
-          <span>KCTG</span>
-          <span>Pwn</span>
-          <span>ret2win</span>
-        </span>
-      </a>
-
-      <a class="featured-card" href="/posts/Meta4Sec-2025/">
-        <img src="/assets/img/featured/meta4sec-crypto.svg" alt="Meta4Sec crypto thumbnail">
-        <span class="featured-kicker">Crypto</span>
-        <strong>Meta4Sec 2025 - Crypto Challenges</strong>
-        <span class="featured-summary">Cryptography notes covering pattern analysis, known plaintext reasoning, and RSA weakness exploitation.</span>
-        <span class="featured-meta">
-          <span>Meta4Sec</span>
-          <span>Crypto</span>
-          <span>Analysis</span>
-        </span>
-      </a>
-
-      <a class="featured-card" href="/posts/HackTheBox-Obscure-Forensic-Writeup/">
-        <img src="/assets/img/featured/obscure-forensics.svg" alt="Hack The Box Obscure thumbnail">
-        <span class="featured-kicker">Forensics</span>
-        <strong>Hack The Box - Obscure</strong>
-        <span class="featured-summary">A forensic investigation through PHP web shell deobfuscation, PCAP analysis, payload recovery, and KeePass cracking.</span>
-        <span class="featured-meta">
-          <span>Hack The Box</span>
-          <span>Forensics</span>
-          <span>Easy</span>
-        </span>
-      </a>
+        <a class="featured-card" href="{{ post.url | relative_url }}">
+          {% if featured_image %}
+            <img
+              src="{{ featured_image | relative_url }}"
+              alt="{{ featured_image_alt | xml_escape }}"
+              class="{% if post.featured_image_fit == 'contain' %}contain{% endif %}"
+            >
+          {% endif %}
+          {% if featured_kicker %}
+            <span class="featured-kicker">{{ featured_kicker }}</span>
+          {% endif %}
+          <strong>{{ post.title }}</strong>
+          {% if featured_summary %}
+            <span class="featured-summary">{{ featured_summary }}</span>
+          {% endif %}
+          {% if featured_meta.size > 0 %}
+            <span class="featured-meta">
+              {% for meta in featured_meta %}
+                <span>{{ meta }}</span>
+              {% endfor %}
+            </span>
+          {% endif %}
+        </a>
+      {% endfor %}
     </div>
   </section>
 {% endif %}

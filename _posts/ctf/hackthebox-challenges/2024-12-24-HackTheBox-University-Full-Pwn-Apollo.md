@@ -14,9 +14,10 @@ tags:
   - cve-2024-31621
   - rclone
   - privilege-escalation
-image: /assets/img/htb-univ-2024/banner.png
+image: /assets/img/featured/hackthebox-logo.svg
 author: rafidghanim
 toc: true
+featured: true
 ---
 
 ![](/assets/img/htb-univ-2024/banner.png)

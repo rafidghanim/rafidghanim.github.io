@@ -12,6 +12,7 @@ tags:
 image: /assets/img/featured/obscure-forensics.svg
 author: rafidghanim
 toc: true
+featured: true
 ---
 
 > Writeup for the **HackTheBox Obscure** forensics challenge.

@@ -10,14 +10,14 @@
       {{ site.data.locales[include.lang].post.posted }}
       {% include datetime.html date=page.date tooltip=true lang=include.lang %}
     </span>
-=begin
+
     {% if page.last_modified_at and page.last_modified_at != page.date %}
       <span>
         {{ site.data.locales[include.lang].post.updated }}
         {% include datetime.html date=page.last_modified_at tooltip=true lang=include.lang %}
       </span>
     {% endif %}
-=end
+
 <div class="d-flex justify-content-between gap-3 post-meta-row">
       <span>
         {% if page.author %}
